@@ -1,0 +1,14 @@
+{
+    "name": "user/php_proj",
+    "description": "Sample project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "carnuare",
+            "email": "carnuare@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4"
+    }
+}
