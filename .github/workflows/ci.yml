@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test:
+  php-unit-tests:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -20,7 +20,15 @@ jobs:
     - uses: actions/setup-node@v2
     - run: composer update
     - run: composer install # or alternative dependency management
-    # ... then your own project steps ...
+  puppeteer:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4]
+        dependency-version: [prefer-stable]
+
+    steps:
     - run: echo "Running PHPUnit tests..."
     - run: phpunit ./src/tests/phpunit/
     - run: |
