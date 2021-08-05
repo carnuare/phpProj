@@ -28,4 +28,4 @@ jobs:
         docker-compose up -d
         echo "Running Puppeteer tests..."
         npm install puppeteer
-        node tests/puppeteer/example.js
+        node src/tests/puppeteer/example.js
