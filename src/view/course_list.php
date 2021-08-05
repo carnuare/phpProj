@@ -34,10 +34,10 @@
         <input type="hidden" name="action" value="add_course">
         <div class="add__inputs">
             <label>Name:</label>
-            <input type="text" name="course_name" maxlength="30" placeholder="Name" autofocus required>
+            <input type="text" id="course_name" name="course_name" maxlength="30" placeholder="Name" autofocus required>
         </div>
         <div class="add__addItem">
-            <button class="add-button bold">Add</button>
+            <button id="addCourse" class="add-button bold">Add</button>
         </div>
     </form>
 </section>
