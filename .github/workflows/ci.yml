@@ -24,9 +24,8 @@ jobs:
     - run: echo "Running PHPUnit tests..."
     - run: phpunit ./src/tests/phpunit/
     - run: |
-        echo "Running app in localhost:8010"
-        cd src
-        php -S localhost:8010
+        echo "Running docker-compose"
+        docker-compose up -d
         echo "Running Puppeteer tests..."
         npm install puppeteer
         node tests/puppeteer/example.js
