@@ -1,0 +1,19 @@
+name: CI
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: php-actions/composer@v5 # or alternative dependency management
+    - uses: php-actions/phpunit@v3
+    # ... then your own project steps ...
+    - run: echo "Running tests..."
+    - run: phpunit ./src/tests/phpunit/
