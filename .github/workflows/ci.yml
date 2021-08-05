@@ -1,4 +1,4 @@
-name: CI phpunit test
+name: CI PHPUnit and Puppeteer
 
 on: 
   push:
@@ -17,8 +17,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
     - run: composer update
     - run: composer install # or alternative dependency management
     # ... then your own project steps ...
-    - run: echo "Running tests..."
+    - run: echo "Running PHPUnit tests..."
     - run: phpunit ./src/tests/phpunit/
+    - run: |
+        echo "Running app in localhost:8010"
+        cd src
+        php -S localhost:8010
+        echo "Running Puppeteer tests..."
+        npm install puppeteer
+        node tests/puppeteer/example.js
