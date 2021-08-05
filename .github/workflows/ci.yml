@@ -28,4 +28,6 @@ jobs:
         docker-compose up -d
         echo "Running Puppeteer tests..."
         npm install puppeteer
-        node src/tests/puppeteer/example.js
+        cd src/tests
+        node puppeteer/example.js
+      #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
