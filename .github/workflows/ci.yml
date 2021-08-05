@@ -20,6 +20,8 @@ jobs:
     - uses: actions/setup-node@v2
     - run: composer update
     - run: composer install # or alternative dependency management
+    - run: echo "Running PHPUnit tests..."
+    - run: phpunit ./src/tests/phpunit/
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
@@ -29,8 +31,6 @@ jobs:
         dependency-version: [prefer-stable]
 
     steps:
-    - run: echo "Running PHPUnit tests..."
-    - run: phpunit ./src/tests/phpunit/
     - run: |
         echo "Running docker-compose"
         docker-compose up -d
