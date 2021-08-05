@@ -1,2 +1,5 @@
 node_modules
 volumenes
+vendor
+.phpunit.result.cache
+src/tests/phpunit/.phpunit.result.cache
