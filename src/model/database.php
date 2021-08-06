@@ -1,7 +1,7 @@
 <?php
-    $dsn = 'mysql:host=db;dbname=assignment_tracker';
-    $username = 'root';
-    $password = 'example';
+    $dsn = 'mysql:host=remotemysql.com;dbname=tuOok7zziY'; //antes era host=db y dbname=assignment_tracker
+    $username = 'tuOok7zziY'; //antes root
+    $password = 'nt9zGknXsZ'; //antes example
 
 
     try {
