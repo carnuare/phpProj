@@ -2,9 +2,9 @@ name: CI PHPUnit and Puppeteer
 
 on: 
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   php-unit-tests:
@@ -35,11 +35,15 @@ jobs:
     - uses: actions/setup-node@v2
     - run: composer update
     - run: composer install
+    - name: Run App
+      run: docker-compose up -d php
+      env:
+        MYSQL_HOST: remotemysql.com
+        MYSQL_USER: tuOok7zziY
+        MYSQL_DATABASE: tuOok7zziY
+        MYSQL_PASSWORD: nt9zGknXsZ
     - run: |
         sudo apt install mysql-server
-        echo "Running docker-compose"
-        docker-compose up -d php
-        docker ps
         echo "Running Puppeteer tests..."
         npm install puppeteer
         cd src/tests

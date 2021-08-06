@@ -24,6 +24,8 @@ services:
         - 3306:3306
     environment:
         MYSQL_DATABASE: assignment_tracker
+        MYSQL_USER: sample #additional user and password, can access with root | example
+        MYSQL_PASSWORD: sample
         MYSQL_ROOT_PASSWORD: example
       
   phpmyadmin:

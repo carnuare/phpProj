@@ -9,7 +9,8 @@
 
 Head to http://localhost:8010/ to see the app.
 
-You need to import the database "assignment_tracker.sql" (located in the root folder) into *phpmyadmin*.
+You need to import "assignment_tracker.sql" (located in the root folder) into the database "assignment_tracker".
+*Phpmyadmin* allows you to do that.
 
 Access *phpmyadmin* in localhost:8020. (User: root | password: example)
 
