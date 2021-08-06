@@ -16,8 +16,8 @@ const puppeteer = require('puppeteer');
 
         //VIEW ASSIGNMENTS INITIAL
         await page.waitForTimeout(2000); //esperar a que se cargue la pagina bien
-        const data = await page.content();
-        console.log(data);
+        const dataAss = await page.content();
+        console.log(dataAss);
         console.log("Taking a screenshot...")
         await page.screenshot({ path: './puppeteer/img/assignments_initial.png'});
         var initialNumAssignments = ((await page.$$("#list > div > div.list__item")).length);
@@ -30,8 +30,8 @@ const puppeteer = require('puppeteer');
             
         ]);
         console.log("Clicked View/Edit courses...");
-        const data = await page.content();
-        console.log(data);
+        const dataCourse = await page.content();
+        console.log(dataCourse);
         console.log("Taking a screenshot...")
         var numCourses = ((await page.$$("#list > div > div.list__item")).length);
         console.log('The number of courses is: %i', numCourses);
