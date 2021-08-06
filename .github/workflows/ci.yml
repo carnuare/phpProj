@@ -24,6 +24,12 @@ jobs:
     - run: phpunit ./src/tests/phpunit/
   puppeteer:
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: example
+          MYSQL_DATABASE: assignment_tracker
     strategy:
       fail-fast: true
       matrix:
@@ -37,7 +43,7 @@ jobs:
     - run: composer install
     - name: Run App and DB
       run: |
-        docker-compose up -d 
+        docker-compose up -d php
         .github/workflows/installDB.sh
 
     - name: Run Tests
