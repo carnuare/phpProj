@@ -37,8 +37,6 @@ jobs:
     - run: composer install
     - run: .github/workflows/installDB.sh
     - run: |
-        echo "Running docker-compose"
-        docker-compose up -d
         echo "Running Puppeteer tests..."
         npm install puppeteer
         cd src/tests
