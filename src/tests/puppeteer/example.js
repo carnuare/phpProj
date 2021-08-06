@@ -31,7 +31,7 @@ const puppeteer = require('puppeteer');
         var numCourses = ((await page.$$("#list > div > div.list__item")).length);
         console.log('The number of courses is: %i', numCourses);
         console.log("Creating new course...");
-        await page.waitForNavigation();
+        await page.waitForTimeout(2000);
         await page.$eval('#course_name', (el, today) => el.value =`puppeteer course ${today}`, today);
         await page.click('#addCourse'); //click añadir
         await page.waitForTimeout(2000);
@@ -49,7 +49,7 @@ const puppeteer = require('puppeteer');
         await page.click("body > main > p > a"); //go to view add assignments
         console.log("Clicked View & Add Assignments...");
         console.log('Creating new assignment...');
-        await page.waitForNavigation();
+        await page.waitForTimeout(2000);
         await page.click('#course_select');
         await page.waitForTimeout(300);
         await page.keyboard.press('ArrowDown');
