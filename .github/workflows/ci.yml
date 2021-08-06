@@ -38,7 +38,7 @@ jobs:
     - name: Run App and DB
       run: |
         docker-compose up -d 
-    #    .github/workflows/installDB.sh
+        .github/workflows/installDB.sh
 
     - name: Run Tests
       run: |
