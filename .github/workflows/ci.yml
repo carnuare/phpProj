@@ -35,17 +35,14 @@ jobs:
     - uses: actions/setup-node@v2
     - run: composer update
     - run: composer install
-    - name: Run App
-      run: docker-compose up -d php
-      env:
-        MYSQL_HOST: remotemysql.com
-        MYSQL_USER: tuOok7zziY
-        MYSQL_DATABASE: tuOok7zziY
-        MYSQL_PASSWORD: nt9zGknXsZ
-    - run: |
+    - name: Run App and DB
+      run: docker-compose up -d 
+    - name: Run Tests
+      run: |
         sudo apt install mysql-server
         echo "Running Puppeteer tests..."
         npm install puppeteer
         cd src/tests
+        sleep 20 
         node puppeteer/example.js
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
