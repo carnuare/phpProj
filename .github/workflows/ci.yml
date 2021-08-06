@@ -24,14 +24,6 @@ jobs:
     - run: phpunit ./src/tests/phpunit/
   puppeteer:
     runs-on: ubuntu-latest
-    container: ubuntu
-    services:
-      db:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: example
-          MYSQL_DATABASE: assignment_tracker
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     strategy:
       fail-fast: true
       matrix:
@@ -45,7 +37,7 @@ jobs:
     - run: composer install
     - name: Run App and DB
       run: |
-        docker-compose up -d php
+        docker-compose up -d 
         .github/workflows/installDB.sh
 
     - name: Run Tests
