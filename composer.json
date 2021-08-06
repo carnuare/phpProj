@@ -1,5 +1,5 @@
 {
-    "name": "user/php_proj",
+    "name": "carnuare/php_proj",
     "description": "Sample project",
     "type": "project",
     "authors": [
@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^7.4"
+        "php": "^7.4|^8.0"
     },
     
     "require-dev": {

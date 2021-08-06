@@ -1,0 +1,50 @@
+name: CI PHPUnit and Puppeteer
+
+on: 
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  php-unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4]
+        dependency-version: [prefer-stable]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: composer update
+    - run: composer install # or alternative dependency management
+    - run: echo "Running PHPUnit tests..."
+    - run: phpunit ./src/tests/phpunit/
+  puppeteer:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4]
+        dependency-version: [prefer-stable]
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: composer update
+    - run: composer install
+    - name: Run App and DB
+      run: |
+        docker-compose up -d 
+        .github/workflows/installDB.sh
+
+    - name: Run Tests
+      run: |
+        sudo apt install mysql-server
+        echo "Running Puppeteer tests..."
+        npm install puppeteer
+        cd src/tests
+        node puppeteer/example.js
+      #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
