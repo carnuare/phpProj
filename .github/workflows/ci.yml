@@ -21,7 +21,13 @@ jobs:
     - run: composer update
     - run: composer install # or alternative dependency management
     - run: echo "Running PHPUnit tests..."
-    - run: phpunit ./src/tests/phpunit/
+    - name: Run PHPUnit tests
+      run: phpunit ./src/tests/phpunit/
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        parallel: true
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
@@ -49,11 +55,11 @@ jobs:
         node puppeteer/example.js
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
   finish:
-    needs: [php-unit-tests, puppeteer]
+    needs: [php-unit-tests]
     runs-on: ubuntu-latest
     steps:
     - name: Coveralls Finished
-      uses: coverallsapp/github-action@1.1.3
+      uses: coverallsapp/github-action@master
       with:
         parallel-finished: true
       env:
