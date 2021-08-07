@@ -30,3 +30,7 @@ Please make sure that the application is running before executing the tests.
 # VISIT THE DEPLOYED APP
 
 https://php-sample-proj.herokuapp.com/
+
+## COVERAGE
+
+[![Coverage Status](https://coveralls.io/repos/github/carnuare/phpProj/badge.svg?branch=main)](https://coveralls.io/github/carnuare/phpProj?branch=develop)
