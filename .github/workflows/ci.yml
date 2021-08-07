@@ -17,10 +17,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - run: composer update
-    - run: composer install # or alternative dependency management
-    - run: echo "Running PHPUnit tests..."
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@master
+      with:
+        version: 10.x
+    - name: npm install
+      run: npm install
     - name: Run PHPUnit tests
       run: phpunit ./src/tests/phpunit/
     - name: Coveralls Parallel
