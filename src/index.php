@@ -35,7 +35,7 @@
         case "add_assignment":
             if ($course_id && $description) {
                 add_assignment($course_id, $description);
-                header("Location: .?course_id=$course_id");
+                header("Location: .?action=list_assignments");
             } else {
                 $error = "Invalid assignment data. Check all fields and try again.";
                 include('view/error.php');
