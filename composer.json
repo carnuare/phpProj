@@ -13,6 +13,7 @@
     },
     "require-dev": {
         "phpunit/php-code-coverage": "^9.2",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "php-coveralls/php-coveralls": "^2.4"
     }
 }
