@@ -24,12 +24,13 @@ jobs:
     - name: npm install
       run: npm install
     - name: Run PHPUnit tests
-      run: phpunit ./src/tests/phpunit/
+      run: phpunit . --coverage-clover cov/clover.xml --whitelist=Sample.php 
     - name: Upload coverage results to Coveralls
       run: |
         composer global require php-coveralls/php-coveralls
-        sleep(20)
-        php-coveralls --coverage_clover=build/logs/clover.xml -v
+        sleep 20
+        cd src/tests/phpunit
+        php-coveralls --coverage_clover=cov/clover.xml -v
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   puppeteer:
