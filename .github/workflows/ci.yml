@@ -25,6 +25,11 @@ jobs:
       run: npm install
     - name: Run PHPUnit tests
       run: phpunit ./src/tests/phpunit/
+    - name: Upload coverage results to Coveralls
+        run: |
+          composer global require php-coveralls/php-coveralls
+          php-coveralls ./src/tests/phpunit/ --coverage_clover=build/logs/clover.xml -v
+
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
