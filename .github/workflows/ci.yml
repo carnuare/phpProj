@@ -26,11 +26,11 @@ jobs:
     - name: Run PHPUnit tests
       run: phpunit ./src/tests/phpunit/
     - name: Upload coverage results to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
           php-coveralls ./src/tests/phpunit/ --coverage_clover=build/logs/clover.xml -v
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
@@ -57,14 +57,14 @@ jobs:
         cd src/tests
         node puppeteer/example.js
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
-  finish:
-    needs: [php-unit-tests]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
-      with:
-        parallel-finished: true
-      env:
-        github-token: ${{ secrets.GITHUB_TOKEN }} #el toquen lo da automaticamente github, no hace falta ponerlo por ningun lado
+#  finish:
+#    needs: [php-unit-tests]
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Coveralls Finished
+#      uses: coverallsapp/github-action@master
+#      with:
+#        parallel-finished: true
+#      env:
+#        github-token: ${{ secrets.GITHUB_TOKEN }} #el toquen lo da automaticamente github, no hace falta ponerlo por ningun lado
         
