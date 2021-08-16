@@ -25,7 +25,7 @@ To run the unit tests run: (in src/tests/phpunit) phpunit .
 
 To run the end2end test run: (in src/tests/puppeteer) node example.js 
 
-Please make sure that the application is running before executing the tests.
+Please make sure that the application is running locally before executing the e2e tests.
 
 # VISIT THE DEPLOYED APP
 
