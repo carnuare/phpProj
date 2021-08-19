@@ -30,7 +30,8 @@ jobs:
     - name: Upload to Codecov
       uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        directory: ./src/tests/phpunit/cov
+        #token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         files: ./src/tests/phpunit/cov/clover.xml
         flags: unittests # optional
   puppeteer:
