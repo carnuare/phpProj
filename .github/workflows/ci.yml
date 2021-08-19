@@ -27,12 +27,12 @@ jobs:
       run: |
         cd src/tests/phpunit
         phpunit . --coverage-clover cov/clover.xml --whitelist=SampleTest.php 
-    - uses: codecov/codecov-action@v2
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v2
       with:
-      token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-      files: ./src/tests/phpunit/cov/clover.xml
-      flags: unittests # optional
-      name: Upload to Codecov # optional
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: ./src/tests/phpunit/cov/clover.xml
+        flags: unittests # optional
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
