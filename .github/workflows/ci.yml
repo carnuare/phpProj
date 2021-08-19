@@ -26,11 +26,11 @@ jobs:
     - name: Run PHPUnit tests
       run: |
         cd src/tests/phpunit
-        phpunit . --coverage-clover cov/clover.xml --whitelist=Sample.php 
+        phpunit . --coverage-clover cov/clover.xml --whitelist=SampleTest.php 
     - name: Upload coverage results to Coveralls
       run: | 
         composer global require php-coveralls/php-coveralls
-        sleep 20
+        sleep 2
         
         php-coveralls --coverage_clover=cov/clover.xml -v
       env:
