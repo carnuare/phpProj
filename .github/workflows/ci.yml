@@ -23,14 +23,15 @@ jobs:
         version: 10.x
     - name: npm install
       run: npm install
-    - name: Run PHPUnit tests
+    - name: Run PHPUnit tests and upload to Codecov
       run: |
         cd src/tests/phpunit
-        phpunit . --coverage-clover cov/clover.xml --whitelist=SampleTest.php 
-    - name: Upload to Codecov
-      uses: codecov/codecov-action@v2
-      with:
-        directory: ./src/tests/phpunit/cov
+        phpunit . --coverage-clover coverage.xml --whitelist=SampleTest.php 
+        curl -s https://codecov.io/bash
+    #- name: Upload to Codecov
+    #  uses: codecov/codecov-action@v2
+    #  with:
+    #    directory: ./src/tests/phpunit/cov
         #token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         #files: ./src/tests/phpunit/cov/clover.xml
         #flags: unittests # optional
