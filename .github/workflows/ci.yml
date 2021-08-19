@@ -27,7 +27,7 @@ jobs:
       run: |
         cd src/tests/phpunit
         phpunit . --coverage-clover coverage.xml --whitelist=SampleTest.php 
-        curl -s https://codecov.io/bash
+        curl -s https://codecov.io/bash -f coverage.xml
     #- name: Upload to Codecov
     #  uses: codecov/codecov-action@v2
     #  with:
