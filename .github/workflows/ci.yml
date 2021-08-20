@@ -36,7 +36,10 @@ jobs:
       with:
         directory: ./src/tests/phpunit/cov
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        name: unit-tets
+        flags: unittests
+        name: codecov-unit
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true
         #files: ./src/tests/phpunit/cov/coverage.xml
         #flags: unittests # optional
   puppeteer:
