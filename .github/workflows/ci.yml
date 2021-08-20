@@ -17,16 +17,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install phpunit 9 #XDEBUG_MODE=coverage /usr/local/bin/phpunit --coverage-text
-      run: |
-        sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
-        sudo chmod +x /usr/local/bin/phpunit
-        phpunit --check-version
     - name: Setup PHP with Xdebug
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
         coverage: xdebug
+    - name: Install phpunit 9 #XDEBUG_MODE=coverage /usr/local/bin/phpunit --coverage-text
+      run: |
+        sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
+        sudo chmod +x /usr/local/bin/phpunit
+        phpunit --check-version
+    
     #- name: Composer install
     #  run: |
     #    composer install
