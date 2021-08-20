@@ -17,14 +17,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 10.x
-      uses: actions/setup-node@master
-      with:
-        version: 10.x
-    - name: npm install
+    - name: Composer install
       run: |
-        npm install
-        phpunit --self-update
+        composer install
           
     - name: Run PHPUnit tests and upload to Codecov
       run: |
