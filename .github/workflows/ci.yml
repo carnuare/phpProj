@@ -27,11 +27,6 @@ jobs:
         sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
         sudo chmod +x /usr/local/bin/phpunit
         phpunit --check-version
-    
-    #- name: Composer install
-    #  run: |
-    #    composer install
-          
     - name: Run PHPUnit tests and upload to Codecov
       run: |
         cd src/tests/phpunit
@@ -40,7 +35,8 @@ jobs:
       uses: codecov/codecov-action@v2
       with:
         directory: ./src/tests/phpunit/cov
-        #token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        name: unit-tets
         #files: ./src/tests/phpunit/cov/coverage.xml
         #flags: unittests # optional
   puppeteer:
