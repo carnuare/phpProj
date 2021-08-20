@@ -17,11 +17,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
-    - run: composer update
-    - run: composer install # or alternative dependency management
-    - run: echo "Running PHPUnit tests..."
-    - run: phpunit ./src/tests/phpunit/
+    - name: Setup PHP with Xdebug
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        coverage: xdebug
+    - name: Install phpunit 9 #XDEBUG_MODE=coverage /usr/local/bin/phpunit --coverage-text
+      run: |
+        sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
+        sudo chmod +x /usr/local/bin/phpunit
+        phpunit --check-version
+    - name: Run PHPUnit tests and upload to Codecov
+      run: |
+        cd src/tests/phpunit
+        phpunit . --coverage-clover cov/coverage.xml --whitelist=SampleTest.php 
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        directory: ./src/tests/phpunit/cov
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        flags: unittests
+        name: codecov-unit
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true
+        #files: ./src/tests/phpunit/cov/coverage.xml
+        #flags: unittests # optional
   puppeteer:
     runs-on: ubuntu-latest
     strategy:
@@ -48,3 +68,4 @@ jobs:
         cd src/tests
         node puppeteer/example.js
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
+        

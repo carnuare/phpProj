@@ -27,6 +27,12 @@ To run the end2end test run: (in src/tests/puppeteer) node example.js
 
 Please make sure that the application is running locally before executing the e2e tests.
 
+## COVERAGE
+
+[![codecov](https://codecov.io/gh/carnuare/phpProj/branch/main/graph/badge.svg?token=FHLE66T2CN)](https://codecov.io/gh/carnuare/phpProj)
+
 # VISIT THE DEPLOYED APP
 
 https://php-sample-proj.herokuapp.com/
+
+
