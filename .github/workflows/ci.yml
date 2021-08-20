@@ -21,7 +21,7 @@ jobs:
       run: |
         sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
         sudo chmod +x /usr/local/bin/phpunit
-        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
+        XDEBUG_MODE=coverage /usr/local/bin/phpunit --coverage-text
         phpunit --check-version
     #- name: Composer install
     #  run: |
