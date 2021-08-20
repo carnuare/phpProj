@@ -17,7 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: php-actions/phpunit@v9 
+    - name: Install phpunit 9
+      run: |
+        wget -O phpunit https://phar.phpunit.de/phpunit-9.phar
+        chmod +x phpunit
+        ./phpunit --version
     #- name: Composer install
     #  run: |
     #    composer install
