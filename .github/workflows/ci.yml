@@ -17,9 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Composer install
-      run: |
-        composer install
+    - uses: php-actions/composer@v5 # or alternative dependency management
+    - uses: php-actions/phpunit@v3
+    #- name: Composer install
+    #  run: |
+    #    composer install
           
     - name: Run PHPUnit tests and upload to Codecov
       run: |
