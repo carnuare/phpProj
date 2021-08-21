@@ -6,4 +6,9 @@ class Person
     {
         return 'Hello World';
     }
+
+    public function notCovered()
+    {
+        return 'haha';
+    }
 }

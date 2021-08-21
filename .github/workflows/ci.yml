@@ -38,7 +38,6 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         flags: unittests
         name: codecov-unit
-        path_to_write_report: ./coverage/codecov_report.txt
         verbose: true
         #files: ./src/tests/phpunit/cov/coverage.xml
         #flags: unittests # optional
