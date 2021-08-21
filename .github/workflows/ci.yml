@@ -30,14 +30,13 @@ jobs:
     - name: Run PHPUnit tests
       run: |
         cd src/tests/phpunit
-        phpunit . --coverage-clover cov/coverage.xml --whitelist=SampleTest.php 
+        phpunit . --coverage-clover cov/coverage.xml --whitelist=Sample.php 
     - name: Upload to Codecov
       uses: codecov/codecov-action@v2
       with:
         directory: ./src/tests/phpunit/cov
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         flags: backend
-        name: codecov-unit
         verbose: true
         #files: ./src/tests/phpunit/cov/coverage.xml
         #flags: unittests # optional
