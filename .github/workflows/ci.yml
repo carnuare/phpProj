@@ -27,7 +27,7 @@ jobs:
         sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
         sudo chmod +x /usr/local/bin/phpunit
         phpunit --check-version
-    - name: Run PHPUnit tests and upload to Codecov
+    - name: Run PHPUnit tests
       run: |
         cd src/tests/phpunit
         phpunit . --coverage-clover cov/coverage.xml --whitelist=SampleTest.php 
@@ -36,7 +36,7 @@ jobs:
       with:
         directory: ./src/tests/phpunit/cov
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        flags: unittests
+        flags: backend
         name: codecov-unit
         verbose: true
         #files: ./src/tests/phpunit/cov/coverage.xml
