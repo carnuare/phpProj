@@ -1,0 +1,25 @@
+coverage:
+  status:
+    project:
+      default: off
+      frontend:
+        flags: 
+          - frontend
+      backend:
+        target: 40%
+        flags: 
+          - backend
+
+
+flags:
+  # filter the folder(s) you wish to measure by that flag
+  backend:
+    # only include files in the backend folder
+    paths:
+      - src/model
+  frontend:
+    paths:
+      - src/view
+  tests:
+    paths:
+      - src/tests
