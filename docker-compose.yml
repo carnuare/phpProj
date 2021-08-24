@@ -11,6 +11,7 @@ services:
       - ./docker/php/conf.d/error_reporting.ini:/user/local/etc/php/conf.d/error_reporting.ini
     build:
       context: .
+      dockerfile: Dockerfile
     expose:
       - 80
     ports:
