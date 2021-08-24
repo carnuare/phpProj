@@ -9,6 +9,11 @@ const puppeteer = require('puppeteer');
 
         const browser = puppeteer.launch();
         const page = await (await browser).newPage();
+        // Start recording JS and CSS coverage data
+        await Promise.all([
+            page.coverage.startJSCoverage(),
+            page.coverage.startCSSCoverage()
+    ]   );
         await page.goto('http://localhost:8010');
     
         console.log("Browser opened. Viewing assignments...");
@@ -74,6 +79,11 @@ const puppeteer = require('puppeteer');
         }
         
         //CLOSE
+        // Retrive the coverage objects
+        const [jsCoverage, cssCoverage] = await Promise.all([
+            page.coverage.stopJSCoverage(),
+            page.coverage.stopCSSCoverage(),
+        ]);
         
         
         await (await browser).close();
