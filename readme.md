@@ -11,7 +11,7 @@ Head to http://localhost:8010/ to see the app.
 
 You need to import "assignment_tracker.sql" (located in the root folder) into the database "assignment_tracker".
 *Phpmyadmin* allows you to do that. 
-Access *phpmyadmin* in localhost:8020. (User: root | password: example)
+Access *phpmyadmin* in localhost:8020. (User: root | password: example).
 
 You can also import the file running the following command: 
 
@@ -23,7 +23,7 @@ Now you can use the app.
 
 To run the unit tests run: (in src/tests/phpunit) phpunit .
 
-To run the end2end test run: (in src/tests/puppeteer) node example.js 
+To run the end2end test run: (in src/tests) node example.js 
 
 Please make sure that the application is running locally before executing the e2e tests.
 

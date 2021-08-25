@@ -61,8 +61,8 @@ jobs:
     - name: Run Tests
       run: |
         sudo apt install mysql-server
-        echo "Running Puppeteer tests..."
         npm install puppeteer
+        echo "Running Puppeteer tests..."
         cd src/tests
         node puppeteer/example.js
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
