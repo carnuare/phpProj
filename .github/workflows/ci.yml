@@ -87,6 +87,7 @@ jobs:
     - name: Run Tests
       run: |
         sudo apt install mysql-server
+        npm install --save @ffmpeg-installer/ffmpeg
         npm install -g testcafe
         sudo apt-get install xvfb
         sudo apt-get install xvfb firefox
