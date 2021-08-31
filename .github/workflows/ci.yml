@@ -68,28 +68,28 @@ jobs:
       #es importante hacer el node desde la carpeta tests porque si no, el tests no coge bien la ruta para guardar las screenshots
   testcafe:
     runs-on: ubuntu-latest
-      strategy:
-        fail-fast: true
-        matrix:
-          php: [7.4]
-          dependency-version: [prefer-stable]
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.4]
+        dependency-version: [prefer-stable]
 
-      steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: composer update
-      - run: composer install
-      - name: Run App and DB
-        run: |
-          docker-compose up -d 
-          .github/workflows/installDB.sh
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+    - run: composer update
+    - run: composer install
+    - name: Run App and DB
+      run: |
+        docker-compose up -d 
+        .github/workflows/installDB.sh
 
-      - name: Run Tests
-        run: |
-          sudo apt install mysql-server
-          npm install -g testcafe
-          sudo apt-get install xvfb
-          sudo apt-get install xvfb firefox
-          cd src/tests/testcafe
-          testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true
+    - name: Run Tests
+      run: |
+        sudo apt install mysql-server
+        npm install -g testcafe
+        sudo apt-get install xvfb
+        sudo apt-get install xvfb firefox
+        cd src/tests/testcafe
+        testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true      
         
