@@ -13,7 +13,7 @@ test('Create course', async t => {
         .typeText('#course_name', 'Cafe Course')
         .click('#addCourse')
         .wait(1000)
-        .expect(Selector('#list > div > div.list__item').count).eql(numCourse +1);
+        .expect(Selector('#list > div > div.list__item').count).eql(numCourse +2);
     
     
     //const articleHeader = await Selector('.result-content').find('h1');

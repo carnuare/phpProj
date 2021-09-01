@@ -96,8 +96,10 @@ jobs:
     # Upload to Drive
     - name: Upload README.md to Google Drive
       uses: Jodebu/upload-to-drive@master
+      id: driveUpload
       with:
-        target: readme.md
+        target: src/tests/testcafe/artifacts/videos
         credentials: ${{ secrets.DRIVE_CREDENTIALS }}
-        folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B     
+        folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B  
+        message: File uploaded to ${{ steps.driveUpload.outputs.link }}   
         
