@@ -98,6 +98,6 @@ jobs:
       uses: Jodebu/upload-to-drive@master
       with:
         target: readme.md
-        credentials: secrets.DRIVE_CREDENTIALS
+        credentials: ${{ secrets.DRIVE_CREDENTIALS }}
         folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B     
         
