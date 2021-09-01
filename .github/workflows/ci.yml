@@ -94,12 +94,12 @@ jobs:
         cd src/tests/testcafe
         testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true
     # Upload to Drive
-    - name: Upload README.md to Google Drive
+    - name: Upload video to Google Drive
       if: ${{ failure() }}
       uses: Jodebu/upload-to-drive@master
       id: driveUpload
       with:
-        target: src/tests/testcafe/artifacts/videos
+        target: src/tests/testcafe/artifacts/videos/*.mp4
         credentials: ${{ secrets.DRIVE_CREDENTIALS }}
         folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B  
         message: File uploaded to ${{ steps.driveUpload.outputs.link }}   
