@@ -31,7 +31,7 @@ Please make sure that the application is running locally before executing the e2
 
 [![codecov](https://codecov.io/gh/carnuare/phpProj/branch/main/graph/badge.svg?token=FHLE66T2CN)](https://codecov.io/gh/carnuare/phpProj)
 
-# VISIT THE DEPLOYED APP
+# VISIT THE DEPLOYED APP v
 
 https://php-sample-proj.herokuapp.com/
 
