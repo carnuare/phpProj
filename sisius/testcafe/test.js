@@ -1,14 +1,19 @@
 import { Selector } from 'testcafe';
 
+const CREDS = require('./../.secrets/creds');
+const username= CREDS.username;
+const password = CREDS.password;
+/*
 if(process.env.UVUSER == null){
     //const CREDS = require('./../../../../.secrets/creds'); //~ en php_proj quito /../
     //var username = CREDS.username;
     //var password = CREDS.password;
+    
 }else{
     var username = process.env.UVUSER;
     var password = process.env.UVPASS;
 }
-
+*/
 
 fixture `Recualificacion test`
     .page `https://investigacion.us.es/sisius/investigador/recualificacion/sign_in`;
