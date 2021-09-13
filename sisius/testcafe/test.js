@@ -1,12 +1,12 @@
 import { Selector } from 'testcafe';
 
-if(process.env.secrets.UVUSER == null){
+if(process.env.UVUSER == null){
     //const CREDS = require('./../../../../.secrets/creds'); //~ en php_proj quito /../
     //var username = CREDS.username;
     //var password = CREDS.password;
 }else{
-    var username = process.env.secrets.UVUSER;
-    var password = process.env.secrets.UVPASS;
+    var username = process.env.UVUSER;
+    var password = process.env.UVPASS;
 }
 
 
