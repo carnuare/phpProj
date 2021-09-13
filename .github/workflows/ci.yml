@@ -119,6 +119,9 @@ jobs:
         run: |
           cd sisius/testcafe
           testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true
+        env:
+          UVUSER: ${{ secrets.UVUSER }}
+          UVPASS: ${{ secrets.UVPASS }}
       # Upload to Drive
       - name: Upload video failure to Google Drive
         if: ${{ failure() }}
