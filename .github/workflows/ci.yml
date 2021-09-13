@@ -117,10 +117,6 @@ jobs:
       - run: composer install
       - name: Run Tests
         run: |
-          npm install --save @ffmpeg-installer/ffmpeg
-          npm install -g testcafe
-          sudo apt-get install xvfb
-          sudo apt-get install xvfb firefox
           cd sisius/testcafe
           testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true
       # Upload to Drive
