@@ -1,6 +1,6 @@
 import { Selector } from 'testcafe';
 
-const CREDS = require('./../.secrets/creds');
+const CREDS = require('./.secrets/creds');
 const username= CREDS.username;
 const password = CREDS.password;
 /*
