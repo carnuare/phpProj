@@ -101,33 +101,5 @@ jobs:
         target: src/tests/testcafe/artifacts/videos
         credentials: ${{ secrets.DRIVE_CREDENTIALS }}
         folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B  
-
-  testcafeSisius:
-      runs-on: self-hosted
-      strategy:
-        fail-fast: true
-        matrix:
-          php: [7.4]
-          dependency-version: [prefer-stable]
-
-      steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: composer update
-      - run: composer install
-      - name: Run Tests
-        run: |
-          cd sisius/testcafe
-          testcafe firefox:headless test.js --video artifacts/videos --video-options  pathPattern=failure_$(date -u +%F).mp4,failedOnly=true,singleFile=true
-        env:
-          UVUSER: ${{ secrets.UVUSER }}
-          UVPASS: ${{ secrets.UVPASS }}
-      # Upload to Drive
-      - name: Upload video failure to Google Drive
-        if: ${{ failure() }}
-        uses: Jodebu/upload-to-drive@master
-        with:
-          target: sisius/testcafe/artifacts/videos
-          credentials: ${{ secrets.DRIVE_CREDENTIALS }}
-          folder: 1PDIT4qTieCXaiKzBEBIWmw4mbpDHtT8B  
+ 
         
