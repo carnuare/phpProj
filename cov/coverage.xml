@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
 <coverage generated="1637235247">
   <project timestamp="1637235247">
     <file name="/home/carlos/sample/phpProj/src/tests/phpunit/Sample.php">
