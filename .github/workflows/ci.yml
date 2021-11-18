@@ -10,9 +10,12 @@ jobs:
   sonar:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v2 
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - run: |
+      cd phpProj    
+      ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml
     - uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
