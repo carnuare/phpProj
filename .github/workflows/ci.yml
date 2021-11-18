@@ -16,7 +16,7 @@ jobs:
     - name: generate coverage
       run: |
         composer update
-        ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml
+        ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml 
     - uses: sonarsource/sonarqube-scan-action@master
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
