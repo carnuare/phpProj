@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tests>
+ <testCaseClass name="SampleTest">
+  <testCaseMethod name="test_sample" groups="default"/>
+ </testCaseClass>
+</tests>
