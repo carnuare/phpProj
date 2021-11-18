@@ -15,7 +15,6 @@ jobs:
         fetch-depth: 0
     - name: generate coverage
       run: |
-        cd phpProj    
         ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml
     - uses: sonarsource/sonarqube-scan-action@master
       env:
