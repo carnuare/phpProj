@@ -1,0 +1,14 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="all">
+        <directory>src/tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/tests/phpunit</directory>
+            <exclude>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
