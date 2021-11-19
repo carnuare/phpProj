@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<testsuites>
- <testsuite name="SampleTest">
-  <testcase name="test_sample" groups="default"/>
- </testsuite>
-</testsuites>

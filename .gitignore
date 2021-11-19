@@ -6,3 +6,4 @@ src/tests/phpunit/.phpunit.result.cache
 src/tests/phpunit/cov
 src/tests/testcafe/artifacts
 sisius/testcafe/artifacts
+build

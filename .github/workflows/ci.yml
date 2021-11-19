@@ -47,14 +47,21 @@ jobs:
         sudo curl --location --output /usr/local/bin/phpunit "https://phar.phpunit.de/phpunit.phar"
         sudo chmod +x /usr/local/bin/phpunit
         phpunit --check-version
+        
     - name: Run PHPUnit tests
       run: |
-        cd src/tests/phpunit
-        phpunit . --coverage-clover cov/coverage.xml --whitelist=Sample.php 
+        composer update
+        XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite all --coverage-clover build/logs/clover.xml 
+    - name: Upload to Coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       ./vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+
     - name: Upload to Codecov
       uses: codecov/codecov-action@v2
       with:
-        directory: ./src/tests/phpunit/cov
+        directory: ./build/logs
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         flags: backend
         verbose: true
