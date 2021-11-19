@@ -50,6 +50,8 @@ jobs:
         
     - name: Run PHPUnit tests
       run: |
+        echo ${{ env.GITHUB_REF }}
+        echo "holas"
         composer update
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite all --coverage-clover build/logs/clover.xml 
     - name: Upload to Coveralls
