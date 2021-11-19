@@ -29,6 +29,8 @@ Please make sure that the application is running locally before executing the e2
 
 ## COVERAGE
 
+[![Coverage Status](https://coveralls.io/repos/github/carnuare/phpProj/badge.svg?branch=main)](https://coveralls.io/github/carnuare/phpProj?branch=main)
+
 [![codecov](https://codecov.io/gh/carnuare/phpProj/branch/main/graph/badge.svg?token=FHLE66T2CN)](https://codecov.io/gh/carnuare/phpProj)
 
 # VISIT THE DEPLOYED APP v
