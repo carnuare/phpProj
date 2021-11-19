@@ -50,7 +50,7 @@ jobs:
         
     - name: Run PHPUnit tests
       run: |
-        echo ${GITHUB_REF}
+        echo ${{ secrets.GITHUB_TOKEN }}
         echo "holas"
         composer update
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite all --coverage-clover build/logs/clover.xml 
