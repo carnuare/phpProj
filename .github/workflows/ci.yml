@@ -35,7 +35,7 @@ jobs:
         fetch-depth: 0
     - name: generate + upload
       run: |
-        composer update
+        composer update 
         XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite all --coverage-clover build/logs/clover.xml 
     - name: Upload to Coveralls
       env:
