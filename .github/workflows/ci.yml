@@ -7,27 +7,44 @@ on:
     branches: [ main, develop ]
 
 jobs:
-  sonar:
-    runs-on: self-hosted
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: generate coverage
-      run: |
-        composer update
-        ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml 
-    - uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  # sonar:
+  #   runs-on: self-hosted
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       fetch-depth: 0
+  #   - name: generate coverage
+  #     run: |
+  #       composer update
+  #       ./vendor/bin/phpunit --testsuite all --coverage-clover cov/coverage.xml 
+  #   - uses: sonarsource/sonarqube-scan-action@master
+  #     env:
+  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       # - uses: sonarsource/sonarqube-quality-gate-action@master
       #   timeout-minutes: 5
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  coverallslocal:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: generate + upload
+      run: |
+        composer update
+        XDEBUG_MODE=coverage ./vendor/bin/phpunit --testsuite all --coverage-clover build/logs/clover.xml 
+    - name: Upload to Coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+       ./vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+    
   php-unit-tests:
+    if: 1==2
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
